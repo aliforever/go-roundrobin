@@ -19,6 +19,14 @@ func (r *RoundRobin) Add(items ...string) {
 	r.m.Lock()
 	defer r.m.Unlock()
 
+	for _, item := range items {
+		for _, storedItem := range r.items {
+			if item == storedItem {
+				return
+			}
+		}
+	}
+
 	r.items = append(r.items, items...)
 }
 
