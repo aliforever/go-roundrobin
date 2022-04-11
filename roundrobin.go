@@ -19,7 +19,7 @@ func (r *RoundRobin) Add(items ...string) {
 	r.m.Lock()
 	defer r.m.Unlock()
 
-	items = append(items, items...)
+	r.items = append(r.items, items...)
 }
 
 func (r *RoundRobin) RemoveItem(item string) {
