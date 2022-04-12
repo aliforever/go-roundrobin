@@ -64,3 +64,10 @@ func (r *RoundRobin) Next() (item string, err error) {
 
 	return
 }
+
+func (r *RoundRobin) Items() []string {
+	r.m.Lock()
+	defer r.m.Unlock()
+
+	return r.items
+}
